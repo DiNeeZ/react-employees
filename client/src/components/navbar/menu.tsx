@@ -1,15 +1,9 @@
-import { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu as AntMenu, Grid } from 'antd';
 import { HomeOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Paths } from '../../paths';
 
 const { useBreakpoint } = Grid;
-
-const menuStyle: CSSProperties = {
-  backgroundColor: 'var(--secondary-color)',
-  color: 'var(--white-color)'
-};
 
 type PropType = {
   closeDrawer?: () => void;
@@ -28,8 +22,7 @@ const Menu = ({ closeDrawer }: PropType) => {
 
   return (
     <AntMenu
-      theme='dark'
-      style={menuStyle}
+      style={{ background: 'transparent' }}
       onClick={({ key }) => handleClick(key)}
       mode={md ? 'horizontal' : 'inline'}
       items={[

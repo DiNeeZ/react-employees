@@ -1,5 +1,7 @@
+import { Typography } from 'antd';
+
 const Register = () => {
-  return <h1>Register Page</h1>;
+  return <Typography.Title>Register Page</Typography.Title>;
 };
 
 export default Register;

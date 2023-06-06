@@ -1,8 +1,10 @@
 import { CSSProperties } from 'react';
-import { Layout } from 'antd';
+import { ConfigProvider, Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
 
 import Navbar from '../navbar';
+import { useTheme } from '../../context';
+import { getTheme } from '../../utils/theme';
 
 const { Header, Footer, Content } = Layout;
 
@@ -13,40 +15,42 @@ const layoutStyle: CSSProperties = {
 };
 
 const headerStyle: CSSProperties = {
+  display: 'flex',
   textAlign: 'center',
-  color: 'var(--primary-color-text)',
   height: 64,
   paddingInline: 50,
   lineHeight: '64px',
-  backgroundColor: 'var(--secondary-color)'
+  background: 'rgba(0, 0, 0, 0.05)'
 };
 
 const contentStyle: CSSProperties = {
-  textAlign: 'center',
   flexGrow: 1,
   minHeight: 120,
+  textAlign: 'center',
   lineHeight: '120px',
-  color: 'var(--primary-color-text)',
-  backgroundColor: 'var(--primary-color)'
+  paddingTop: 50
 };
 
 const footerStyle: CSSProperties = {
   textAlign: 'center',
-  color: 'var(--secondary-color)',
-  backgroundColor: 'var(--accent-color)'
+  background: 'rgba(0, 0, 0, 0.05)'
 };
 
 const PageLayout = () => {
+  const { theme } = useTheme();
+
   return (
-    <Layout style={layoutStyle}>
-      <Header style={headerStyle}>
-        <Navbar />
-      </Header>
-      <Content style={contentStyle}>
-        <Outlet />
-      </Content>
-      <Footer style={footerStyle}>Footer</Footer>
-    </Layout>
+    <ConfigProvider theme={getTheme(theme)}>
+      <Layout style={layoutStyle}>
+        <Header style={headerStyle}>
+          <Navbar />
+        </Header>
+        <Content style={contentStyle}>
+          <Outlet />
+        </Content>
+        <Footer style={footerStyle}>Footer</Footer>
+      </Layout>
+    </ConfigProvider>
   );
 };
 

@@ -9,6 +9,7 @@ import PageLayout from './components/layout';
 import Home from './pages/home/index';
 import Login from './pages/login';
 import Register from './pages/register';
+import { ThemeProvider } from './context';
 import { Paths } from './paths';
 
 const router = createBrowserRouter(
@@ -22,7 +23,11 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 };
 
 export default App;
