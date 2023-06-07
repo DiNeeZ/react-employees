@@ -4,7 +4,7 @@ import { Drawer, Button, Grid, Typography } from 'antd';
 import { MenuOutlined, CloseCircleFilled } from '@ant-design/icons';
 
 import { useTheme } from '../../context';
-import { ReactComponent as LogoIcon } from '../../../public/logo.svg';
+import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
 import Menu from './menu';
 import ThemeSwitcher from '../theme-switcher';
 import { Paths } from '../../paths';
