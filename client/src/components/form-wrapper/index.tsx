@@ -2,7 +2,8 @@ import { CSSProperties } from 'react';
 import { Card } from 'antd';
 
 const cardBodyStyles: CSSProperties = {
-  width: '30rem'
+  width: '30rem',
+  textAlign: 'left'
 };
 
 const headerTitleStyles: CSSProperties = {

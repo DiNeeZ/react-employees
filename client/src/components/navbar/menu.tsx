@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu as AntMenu, Grid } from 'antd';
 import { HomeOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Paths } from '../../paths';
@@ -10,11 +11,18 @@ type PropType = {
 };
 
 const Menu = ({ closeDrawer }: PropType) => {
+  const [activeMenuItem, setActiveMenuItem] = useState<string>(Paths.home);
   const navigate = useNavigate();
+  const location = useLocation();
   const { md } = useBreakpoint();
+
+  useEffect(() => {
+    setActiveMenuItem(location.pathname);
+  }, [location]);
 
   const handleClick = (key: string) => {
     navigate(key);
+    console.log();
     if (closeDrawer) {
       closeDrawer();
     }
@@ -23,6 +31,7 @@ const Menu = ({ closeDrawer }: PropType) => {
   return (
     <AntMenu
       style={{ background: 'transparent' }}
+      selectedKeys={[activeMenuItem]}
       onClick={({ key }) => handleClick(key)}
       mode={md ? 'horizontal' : 'inline'}
       items={[

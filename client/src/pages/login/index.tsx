@@ -30,7 +30,8 @@ const Login = () => {
         </Form>
         <Space direction='vertical' size='large'>
           <Typography>
-            Нет аккаунта? <Link to={Paths.register}>Зарегистрируйтесь</Link>
+            <span style={{ marginRight: 16 }}>Нет аккаунта?</span>
+            <Link to={Paths.register}>Зарегистрируйтесь</Link>
           </Typography>
         </Space>
       </FormWrapper>
